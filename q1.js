@@ -1,5 +1,9 @@
 const cloneMonster = (monster, amount) => {
-  /* Your code here */
+  const summon = [];
+  for(let i =0; i , amount; i++){
+    summon[i] = {id: i + 1,...monster}' 
+  }
+  return summon;
 }
 
 //Test cases
