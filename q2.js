@@ -1,5 +1,23 @@
 const mafiaWar = (mafias, fights) => {
-  /* Your code here */
+  	for (let i = 0; i < fights.length; i += 2) {
+		if (mafias[fights[i] - 1].id == mafias[fights[i + 1] - 1].id) continue;
+		else if (
+			mafias[fights[i] - 1].power == mafias[fights[i + 1] - 1].power
+		) {
+			continue;
+		} else if (
+			mafias[fights[i] - 1].power > mafias[fights[i + 1] - 1].power
+		) {
+			mafias[fights[i] - 1].power += mafias[fights[i + 1] - 1].power;
+			mafias[fights[i] - 1].members.push(fights[i + 1]);
+		} else {
+			mafias[fights[i + 1] - 1].power += mafias[fights[i] - 1].power;
+			mafias[fights[i + 1] - 1].members.push(fights[i]);
+		}
+	}
+	return mafias.reduce((max, current) =>
+		current.power > max.power ? current : max
+	);
 }
 
 //Test case
